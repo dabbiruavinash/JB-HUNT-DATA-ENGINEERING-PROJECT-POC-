@@ -1,0 +1,34 @@
+{
+  "source": {
+    "type": "adls",
+    "storage_account": "jbhuntstorage",
+    "container": "raw-data",
+    "path": "shipments/",
+    "format": "parquet"
+  },
+  "sink": {
+    "type": "delta",
+    "path": "abfss://processed-data@jbhuntstorage.dfs.core.windows.net/shipments_delta/",
+    "format": "delta"
+  },
+  "kafka": {
+    "bootstrap_servers": "kafka-broker1:9092,kafka-broker2:9092",
+    "topic": "jbhunt-shipments",
+    "group_id": "jbhunt-spark-consumer"
+  },
+  "scd2_enabled": true,
+  "scd2": {
+    "primary_key": "shipment_id",
+    "current_table_path": "abfss://dimensions@jbhuntstorage.dfs.core.windows.net/shipments_scd2/",
+    "effective_date_col": "effective_date",
+    "end_date_col": "end_date",
+    "is_current_col": "is_current"
+  },
+  "checkpoint_path": "abfss://checkpoints@jbhuntstorage.dfs.core.windows.net/streaming_checkpoints/",
+  "output_path": "abfss://processed-data@jbhuntstorage.dfs.core.windows.net/streaming_output/",
+  "performance": {
+    "aqe_enabled": true,
+    "cache_enabled": true,
+    "broadcast_join_threshold": "10MB"
+  }
+}

@@ -1,0 +1,40 @@
+jb_hunt_data_engineering/
+├── config/
+│   ├── __init__.py
+│   ├── config_manager.py
+│   └── settings.py
+├── connectors/
+│   ├── __init__.py
+│   ├── adls_connector.py
+│   ├── s3_connector.py
+│   ├── gcs_connector.py
+│   ├── kafka_connector.py
+│   └── database_connector.py
+├── models/
+│   ├── __init__.py
+│   ├── base_model.py
+│   ├── shipment.py
+│   ├── driver.py
+│   ├── vehicle.py
+│   └── customer.py
+├── processors/
+│   ├── __init__.py
+│   ├── data_processor.py
+│   ├── file_processor.py
+│   ├── stream_processor.py
+│   └── batch_processor.py
+├── utils/
+│   ├── __init__.py
+│   ├── logger.py
+│   ├── validators.py
+│   └── helpers.py
+├── modules/
+│   ├── __init__.py
+│   ├── module_01_kafka_consumer.py
+│   ├── module_02_kafka_producer.py
+│   ├── module_03_adls_reader.py
+│   ├── ... (all 50 modules)
+│   └── module_50_delta_time_travel.py
+├── Main.py
+├── requirements.txt
+└── README.md
